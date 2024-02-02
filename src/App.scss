@@ -59,8 +59,14 @@ body {
         padding: 6px 10px;
         width: 100%;
         border-radius: 10px;
-        border: 2px solid #333;
+        border: 2px solid rgb(189, 189, 189);
         margin-bottom: 30px;
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.122);
+        color: white;
+        &::placeholder{
+            color: white;
+        }
       }
     }
     & .left_bottom {

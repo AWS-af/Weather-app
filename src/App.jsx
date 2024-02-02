@@ -15,77 +15,105 @@ function App() {
       });
     }
   };
+  const date = new Date();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const year = date.getFullYear();
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const dayOfWeek = daysOfWeek[date.getDay()];
   return (
     <div className="main">
       <img src={bg} alt="bg" className="bg" />
       <div className="main_left">
         <div className="left_top">
           <div className="left_top_info">
-            <h3>Sunday</h3>
-            <span>10/15/2001</span>
-            <h2>Mostly cloudy</h2>
+            <h3>{dayOfWeek}</h3>
+            <span>{`${day}/${month}/${year}`}</span>
+            <h2>{data.list ? data.list[0].weather[0].description : "Sunny"}</h2>
           </div>
           <input
             type="text"
             onChange={(event) => setLocation(event.target.value)}
             value={location}
             onKeyPress={searchLocaion}
-            placeholder="Location Name"
+            placeholder="Search location"
           />
         </div>
         <div className="left_bottom">
           <h1 className="left_bottom_temp">
-            9<sup>o</sup>C
+            {data.list ? data.list[0].main.temp.toFixed() : 12}&#8451;
           </h1>
-          <span>Kabul, AF</span>
+          <span>
+            {data.city
+              ? data.city.name + ", " + data.city.country
+              : "Kabul, AF"}
+          </span>
         </div>
       </div>
       <div className="main_right">
         <ul className="main_right_days">
           <li>
             <div>
-              <span>sunny</span>
+              <span>
+                {data.list ? data.list[3].weather[0].description : "Sunny"}
+              </span>
               <h2>
-                12<sup>o</sup>C
+                {data.list ? data.list[3].main.temp.toFixed() : 12}&#8451;
               </h2>
             </div>
-            Monday
+            <span>{`${day + 1}/${month}/${year}`}</span>
           </li>
           <li>
             <div>
-              <span>sunny</span>
+              <span>
+                {data.list ? data.list[11].weather[0].description : "Cloudy"}
+              </span>
               <h2>
-                9<sup>o</sup>C
+                {data.list ? data.list[11].main.temp.toFixed() : 12}&#8451;
               </h2>
             </div>
-            Monday
+            {`${day + 2}/${month}/${year}`}
           </li>
           <li>
             <div>
-              <span>sunny</span>
+              <span>
+                {data.list ? data.list[19].weather[0].description : "Rainy"}
+              </span>
               <h2>
-                9<sup>o</sup>C
+                {data.list ? data.list[19].main.temp.toFixed() : 12}&#8451;
               </h2>
             </div>
-            Monday
+            {`${day + 3}/${month}/${year}`}
           </li>
           <li>
             <div>
-              <span>sunny</span>
+              <span>
+                {data.list ? data.list[27].weather[0].description : "Sunny"}
+              </span>
               <h2>
-                9<sup>o</sup>C
+                {data.list ? data.list[27].main.temp.toFixed() : 12}&#8451;
               </h2>
             </div>
-            Monday
+            {`${day + 4}/${month}/${year}`}
           </li>
           <li>
             <div>
-              <span>sunny</span>
+              <span>
+                {data.list ? data.list[35].weather[0].description : "Sunny"}
+              </span>
               <h2>
-                9<sup>o</sup>C
+                {data.list ? data.list[35].main.temp.toFixed() : 12}&#8451;
               </h2>
             </div>
-            Monday
+            {`${day + 5}/${month}/${year}`}
           </li>
         </ul>
         <div className="aurthor_name">
