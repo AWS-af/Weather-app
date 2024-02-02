@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import bg from "./assets/vibrant-sky-dusk-orange-blue-multi-colored-generative-ai.jpg";
 import "./App.scss";
+import { LuWind } from "react-icons/lu";
+import { WiHumidity } from "react-icons/wi";
 
 function App() {
   const [data, setData] = useState({});
@@ -48,14 +50,26 @@ function App() {
           />
         </div>
         <div className="left_bottom">
-          <h1 className="left_bottom_temp">
-            {data.list ? data.list[0].main.temp.toFixed() : 12}&#8451;
-          </h1>
-          <span>
-            {data.city
-              ? data.city.name + ", " + data.city.country
-              : "Kabul, AF"}
-          </span>
+          <div className="bottom_temp_container">
+            <h1 className="left_bottom_temp">
+              {data.list ? data.list[0].main.temp.toFixed() : 12}&#8451;
+            </h1>
+            <span>
+              {data.city
+                ? data.city.name + ", " + data.city.country
+                : "Kabul, AF"}
+            </span>
+          </div>
+          <div className="bottom_more_info">
+            <span>Feels like: {data.list ? data.list[0].main.feels_like : 1}&#8451;</span>
+            <span>
+              <LuWind />{'  '}
+              {data.list ? data.list[0].wind.speed : 1} k/h
+            </span>
+            <span>
+              <WiHumidity /> {data.list ? data.list[0].main.humidity : 1} %
+            </span>
+          </div>
         </div>
       </div>
       <div className="main_right">
